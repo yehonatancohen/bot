@@ -57,17 +57,17 @@ def channel_already_exists(channel):
             return True
     return False
 
-@c.command(intents=['helpme','עזרה','h'])
+@c.command(aliases=['helpme','עזרה','h'])
 async def help(ctx):
     msg = """**פקודות**
     1. mention/mentionrandom/mr - מתייג מישהו רנדומלי מהשרת
     """
     await ctx.message.channel.send(msg)
 
-@c.command(intents=['mention','mr','m'])
+@c.command(aliases=['mention','mr','m'])
 async def mentionrandom(ctx):
     memberslist = ctx.message.guild.members
-    rand = random.randint(1, len(memberslist))
+    rand = random.randint(1, len(memberslist) - 1)
     await ctx.message.channel.send(f"{memberslist[rand].mention} מתייג/ת אותך")
     
 @c.command()
