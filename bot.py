@@ -62,12 +62,13 @@ async def help(ctx):
     msg = """**פקודות**
     1. mention/mentionrandom/mr - מתייג מישהו רנדומלי מהשרת
     """
+    await ctx.message.channel.send(msg)
 
 @c.command(intents=['mention','mr','m'])
 async def mentionrandom(ctx):
     memberslist = ctx.message.guild.members
     rand = random.randint(1, len(memberslist))
-    await ctx.messasge.channel.send(f"{memberslist[rand].mention} מתייג/ת אותך")
+    await ctx.message.channel.send(f"{memberslist[rand].mention} מתייג/ת אותך")
     
 @c.command()
 @commands.has_permissions(administrator = True)
